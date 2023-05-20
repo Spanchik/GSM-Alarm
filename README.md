@@ -1,44 +1,70 @@
 # GSM Alarm System
 
-This project implements a motion sensor alarm system using an Arduino board and a GSM module. The system detects motion using a motion sensor and sends SMS notifications to admin numbers when motion is detected. It supports arming and disarming of the alarm via SMS commands.
+This code implements an alarm system using a GSM module, motion sensor, LED and buzzer. The system can be armed or disarmed using SMS commands and sends SMS notifications for various events such as motion detection and low battery.
 
-## Hardware Requirements
+## Hardware requirements
 
-- Arduino board (e.g., NodeMcu)
-- GSM module (e.g., SIM800L)
-- Motion sensor
-- Buzzer
+- Arduino board (I used NodeMcu)
+- GSM module (I used SIM800L)
+- Motion Sensor
 - LED
+- Buzzer
 - Resistors and jumper wires
 
-## Setup and Configuration
+## Circuit connections
 
 1. Connect the GSM module to the Arduino board using RX and TX pins.
 2. Connect the motion sensor, buzzer, and LED to the appropriate pins on the Arduino board.
 3. Modify the `adminNumbers` array in the code to include the phone numbers of the administrators who will receive SMS notifications.
-4. Upload the code to the Arduino board.
 
-## Functionality
+## Customize
 
-The code provides the following functionality:
+1. Install the required libraries:
+     - SoftwareSerial library (part of the Arduino IDE)
 
-- When the system is powered on, it initializes by sending an SMS to the admin numbers with an initialization message.
-- The system checks the motion sensor periodically. If motion is detected and the alarm is armed, an SMS notification is sent to the admin numbers.
-- The system listens for incoming SMS messages. If an admin number sends a command to arm or disarm the alarm, the system executes the corresponding action and sends an SMS confirmation.
-- The system also provides a battery status check command. Sending the command "Battery" will trigger a check of the battery status, and an SMS notification will be sent to the admin numbers with the battery level.
+2. Connect the Arduino board to the computer.
+
+3. Upload the code to the Arduino board.
+
+4. Open the Serial Monitor in the Arduino IDE to view system status and debug information.
 
 ## Usage
 
-1. Power on the system.
-2. The system will send an initialization SMS to the admin numbers.
-3. To arm the alarm, send an SMS to the GSM module with the command "On". The system will arm the alarm and send an SMS confirmation.
-4. When the alarm is armed, any motion detected by the motion sensor will trigger an SMS notification to the admin numbers.
-5. To disarm the alarm, send an SMS with the command "Off". The system will disarm the alarm, turn off the LED and buzzer, and send an SMS confirmation.
-6. To check the battery status, send an SMS with the command "Battery". The system will retrieve the battery status and send an SMS notification with the battery level.
+1. Initialization:
+     - After power on, the system is initialized by configuring the GSM module, setting up SMS notifications, and sending an initialization SMS to the administrator's phone number.
+
+2. Turning the alarm on and off:
+     - To arm, send an SMS with the text “On” to the GSM module phone number.
+     - To turn off the alarm, send an SMS with the text "Off" to the GSM module phone number.
+
+3. Checking the battery level:
+     - To check the battery level, send an SMS with the text "Battery" to the phone number of the GSM module.
+     - System will reply SMS with current battery level.
+
+4. Motion detection:
+     - When the alarm is enabled and the sensor detects motion, the system will trigger the alarm by turning on the LED and sending SMS notification.
+
+5. Low battery notification:
+     - The system periodically checks the battery level (by default, every 12 hours).
+     - If the battery level is critically low (below 10%), the system sends an SMS notification to recharge the device.
+
+## Setting
+
+- Administrator phone numbers:
+    - Add or change admin phone numbers in the `adminNumbers` array.
+    - The system sends SMS alerts to all administrator's phone numbers.
+
+- Pin configuration:
+    - Change the pin assignment in the code according to your hardware connections.
+
+- Deadlines:
+    - Set the `waitTime` and `checkInterval` variables to change the response timeout and battery check interval respectively.
 
 ## Troubleshooting
 
-- If the system is not responding to SMS commands, ensure that the GSM module is properly connected and powered.
+- If the system does not respond to SMS commands, check the GSM module communication settings (baud rate) and make sure the connection with the Arduino is correct.
+
+- If the motion sensor or other components are not working properly, check the wiring connections and pin assignments.
 - If the motion sensor is not detecting motion, check the wiring connections and adjust the sensitivity if necessary.
 - If there are issues with SMS notifications, make sure the admin numbers are correctly set in the `adminNumbers` array and that the GSM module has a valid SIM card with sufficient credit.
 
