@@ -63,8 +63,6 @@ This code implements an alarm system using a GSM module, motion sensor, LED and 
 ## Troubleshooting
 
 - If the system does not respond to SMS commands, check the GSM module communication settings (baud rate) and make sure the connection with the Arduino is correct.
-
 - If the motion sensor or other components are not working properly, check the wiring connections and pin assignments.
-- If the motion sensor is not detecting motion, check the wiring connections and adjust the sensitivity if necessary.
 - If there are issues with SMS notifications, make sure the admin numbers are correctly set in the `adminNumbers` array and that the GSM module has a valid SIM card with sufficient credit.
 
