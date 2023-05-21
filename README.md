@@ -59,7 +59,7 @@ If you encounter any issues with the alarm system project, consider the followin
 
 2. **Hardware Connections**: Verify that all components are correctly connected according to the provided pin configuration.
 
-3. **Library Dependencies****: Ensure that all required libraries, such as SoftwareSerial, are properly installed in your Arduino IDE.
+3. **Library Dependencies**: Ensure that all required libraries, such as SoftwareSerial, are properly installed in your Arduino IDE.
 
 4. **GSM Module Configuration**: Review the configuration commands sent to the GSM module during setup. Check the GSM module documentation for any specific configuration requirements.
 
