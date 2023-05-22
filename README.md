@@ -51,7 +51,7 @@ Follow these steps to set up the alarm system project:
      - If the battery level is critically low (below 10%), the system sends an SMS notification to recharge the device.
 
 
- Troubleshooting
+## Troubleshooting
 
 If you encounter any issues with the alarm system project, consider the following troubleshooting steps:
 
