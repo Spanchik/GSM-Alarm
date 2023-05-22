@@ -12,7 +12,7 @@ unsigned long lastBatteryCheckTime = 0;
 bool isArmed = false; // Alarm status
 bool isMotionDetected = false; // Motion sensor status
 
-String adminNumbers[] = {"+380681496848"};   // Record administrator phone numbers, you can add more than one
+String adminNumbers[] = {"+380123456789"};   // Record administrator phone numbers, you can add more than one
 
 
 // Function for sending SMS messages
